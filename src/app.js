@@ -16,14 +16,14 @@ class TvMaze {
   };
 
   connectDOMElements = () => {
-    const listOFIds = Array.from(document.querySelectorAll("[id]")).map(
+    const listOfIds = Array.from(document.querySelectorAll("[id]")).map(
       (elem) => elem.id
     );
     const listOfShowNames = Array.from(
       document.querySelectorAll("[data-show-name]")
     ).map((elem) => elem.dataset.showName);
 
-    this.viewElems = mapListToDOMElements(listOFIds, "id");
+    this.viewElems = mapListToDOMElements(listOfIds, "id");
     this.showNameButtons = mapListToDOMElements(
       listOfShowNames,
       "data-show-name"
@@ -61,7 +61,7 @@ class TvMaze {
     const divCardBody = createDOMElem("div", "card-body");
     const h5 = createDOMElem("h5", "card-title", show.name);
     const btn = createDOMElem("button", "btn btn-primary", "Show details");
-    let img, p
+    let img, p;
 
     if (show.image) {
       img = createDOMElem("img", "card-img-top", null, show.image.medium);
@@ -77,7 +77,11 @@ class TvMaze {
     if (show.summary) {
       p = createDOMElem("p", "card-text", `${show.summary.slice(0, 80)}...`);
     } else {
-      p = createDOMElem("p", "card-text", 'There is no summary for that show yet.');
+      p = createDOMElem(
+        "p",
+        "card-text",
+        "There is no summary for that show yet."
+      );
     }
 
     divCard.appendChild(divCardBody);
